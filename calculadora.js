@@ -1,5 +1,22 @@
 console.log("Calculadora ::")
-
+const opArr = [
+	{
+		nombre: "Suma",
+		valor: "suma"
+	},
+	{
+		nombre: "Resta",
+		valor: "resta"
+	},
+	{
+		nombre: "Multiplicacion",
+		valor: "multi"
+	},
+	{
+		nombre: "Division",
+		valor: "divi"
+	}
+]
 const CalcService = {
 	suma: function (a, b){
 		return a + b
