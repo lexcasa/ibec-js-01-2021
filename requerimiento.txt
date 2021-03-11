@@ -1,0 +1,32 @@
+- CALCULADORA
+	
+	La calculadora tendra dos inputs y un select donde va a elegir la operacion
+	y un boton de resultado que va a definir en pantalla el resultado entre los inputs y la operacion seleccionada.
+
+	VISTA (X): 
+		- Necesito dos input type number
+		- Un select
+			- Con opciones: 
+				suma, resta, multi, divi
+		- Boton
+		- Etq. <p> para desplegar el resultado
+
+	LOGICA (X)
+		- Crear funciones que correspondan a c/operación
+		- Como creo una estructura de datos escalable en el caso que quiera agregar mas operaciones?
+
+	INTEGRACION (X):
+		1. Como capturamos los numeros de los inputs?
+		2. Como capturamos la opción del select? 
+		3. Como calculamos la operación?
+		4. Como mostramos en pantalla el resultado?
+		5. Como cargar los datos del select de forma escalable
+
+	1. Como capturamos los numeros de los inputs?
+
+		utilizamos el recurso del document y accedemos a los inputs por su ID a traves del: 
+		- document.querySelector("#a1")
+		- document.querySelector("#a2")
+
+		- Obtenemos el valor de los inputs a través de la propiedad .value
+
