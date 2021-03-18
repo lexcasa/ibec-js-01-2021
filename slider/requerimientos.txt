@@ -1,0 +1,21 @@
+- SLIDER
+	
+	Slider con tres imagens con dos flechas (Iz, der) y los indices de c/imagen
+		- Al dar clic en Iz parado en la primera imagen voy a la ultima imagen
+		- Al dar clic en Der parado en la primera imagen voy a la segunda imagen
+		- Al dar clic en los indices del slider voy a la imagen de esa posicion (1, 2, 3)
+
+	VISTA: 
+		- Etiqueta img (puede ser 3)
+		- dos botones (Iz, der)
+		- ul, li para los indices
+
+	LOGICA
+		-Algoritmo para recorrer posiciones de un array de iz a derecha / ciclico
+		-Funcion dado un indice del slide que obtenga la imagen
+
+	INTEGRACION:
+		1. Capturar eventos de iz y der
+		2. Cambiar la imagen dinamicamente segun iz y der
+		3. Cambiar la imagen dinamicamente segun el indice del slider
+
