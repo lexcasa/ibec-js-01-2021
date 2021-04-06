@@ -1,0 +1,65 @@
+- Slider 
+	- Se "mueva" la img de izq a derecha y der a izq
+		- A traves de las flechas < (izq), > (derecha)
+	- Cuando de clic en la poscion de los indices que se mueva a la img que corresponde del indice
+		Si tengo 3 imagenes 
+			1, 2, 3
+	- las imagenes van a estar almacenadas en un array de obj
+
+PROBLEMAS: 
+
+	- Saber como modifico un att de una etiqueta img
+
+		1. Manipular el selector jQuery de la imagen: jQuery('img')
+			Obs: Podemos hacer de esta forma por que hay una sola img en el html
+		2. Luego con el metodo ".attr" podemos modificar cualquier atributo de la etiqueta img
+
+			Ejemplo sintaxis:
+
+			selector.attr(atributo, valor)
+
+			jQuery('img').attr('src', 'url')
+
+		3. El resultado es que va cambiar dinamicamente la imagen de la etiqueta "img"
+
+	- Como conectamos el resultado de las funciones movDer y movIzq con el cambio de atributos
+	de la imagen?
+
+		1. Tengo los valores 0, 1, 2 son las posiciones que puedo tener dentro de mi array
+		2. Se que si ingreso cualquiera de las posiciones en cualquier funcion me devuelve
+		   un objeto con la propiedad "img" -> { img: "url..." }
+
+		3. Quiero llegar a esta notacion: 
+
+			jQuery('img').attr('src', obj.img) -> jQuery('img').attr('src', "url...")
+
+		4. Como integro a los botones?
+
+			4.1. Empezamos a integrar movDer(i, ... , n)
+
+				i= 0, ... 
+				i= 1, ...
+				i= 2, ...
+				i= 3 undefined?
+
+				[ si i == ln -1]
+					i=2 -> i=0
+				[ FIN ]
+
+			4.2 lo mismo para la izquierda
+
+		5. Como cambio la imagen en funcion de los indices?
+
+			5.1 necesito una funcion que dado un indice me devuelva el elemento de su posicion
+
+				Indice: 1, .. n
+				Posicion: 0, .., n-1
+
+				movTo(1) -> elemento de la posicion 0
+				movTo(2) -> elemento de la pos 1
+
+				...
+				movTo(n) -> elemento de la pos n-1
+
+			5.2 Generar dinamicamente los indices dentro de la lista
+

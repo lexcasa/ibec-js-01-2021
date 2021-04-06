@@ -1,3 +1,4 @@
+
 - SLIDER
 	
 	Slider con tres imagens con dos flechas (Iz, der) y los indices de c/imagen
@@ -18,4 +19,3 @@
 		1. Capturar eventos de iz y der
 		2. Cambiar la imagen dinamicamente segun iz y der
 		3. Cambiar la imagen dinamicamente segun el indice del slider
-

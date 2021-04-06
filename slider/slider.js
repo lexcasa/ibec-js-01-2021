@@ -1,8 +1,3 @@
-let sliders  = [15, 2, 11]
-let izBorde  = 0
-let derBorde = sliders.length - 1
-let pos 	 = 0
-
 let movIzq 	 = function (position) {
 	if(position < sliders.length){
 		if(position == izBorde){
@@ -14,6 +9,8 @@ let movIzq 	 = function (position) {
 }
 
 let movDer 	 = function (position) {
+	console.log("position: ", position)
+
 	if(position < sliders.length){
 		if(position == derBorde){
 			return sliders[izBorde]
@@ -21,4 +18,9 @@ let movDer 	 = function (position) {
 			return sliders[position + 1]
 		}
 	}
+}
+
+let movTo = function (index){
+	let position = index - 1
+	return sliders[position]
 }
