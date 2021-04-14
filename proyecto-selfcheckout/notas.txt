@@ -1,0 +1,5 @@
+- PROBLEMAS: 
+
+
+	- Como encuentro un producto por su codigo y luego muestro en la tabla de producto?
+	- Como va a ser la estructura de datos de la base de productos? 

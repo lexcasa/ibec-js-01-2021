@@ -1,0 +1,65 @@
+- SELF CHECKOUT
+
+	ref: https://getbootstrap.com/
+
+	- Objetivo principal: 
+		
+		- Paso los productos por un lector: Ingresamos a mano el codigo
+			- Producto tiene asociado
+				- Precio
+				- Nombre
+				- Categoria
+				- Peso
+			---	
+
+		- Agrego el producto en la balanza	
+			- Peso de la balanza 
+				- Kg
+				- Margen de error de +/- 5%
+
+		* Coincidir que el peso que lee en lector sea el 
+		mismo peso asociado en la balanza
+
+		La suma de los productos (Subtotales)
+		Luego emite un ticket
+
+
+		Ejemplo: 
+			1. Lector lee: manteca conaprole [ peso 200g ]
+			2. Agregar el producto: manteca conaprole en la balanza
+				- Input con los gramos (o quilos)
+					200g
+
+			3. La relacion producto - peso : corresponden
+			4. Agrego el subtotal y sumo el total
+
+			... 
+
+			5. Emito el ticket
+				- Lista de productos 
+				- El total de la compra
+		--- 
+
+		- Historial de compras
+			- Todo ticket se da de alta en un servicio de base de datos
+		- Errores de correspondencia: 
+			
+			1. El peso del prodcuto que se escanea difiere del peso en la balanza
+			2. Medir margenes de tolerancia
+				- El promedio del peso del empaque en funcion del tiempo 
+
+			{
+				cod: "ANMC123123"
+				nombre: "Manteca conaprole 200g",
+				empaques: [ 
+					205,
+					215,
+					209
+				]
+			}
+
+			tolerancia: (205 + 215 + 209)/3 = 6%
+
+	  	- Control: 
+	  		- Si escaneo un producto que no me deje escanear otro producto si no tiene la correspondencia del peso
+	  		- No puedo pesar algo si no tengo por lo menos un producto escaneado
