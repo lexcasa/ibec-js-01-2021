@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <!-- Step 2 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body ng-controller="MainCtrl">
+    <form>
+      <label>Nombre</label>
+      <input type="text" ng-model="usuario.nombre">
+      <br>
+      <label>Apellido</label>
+      <input type="text" ng-model="usuario.apellido">
+      <br>
+      <label>Edad</label>
+      <input type="number" ng-model="usuario.edad">
+      <br>
+      <label>Email</label>
+      <input type="text" ng-model="usuario.email">
+      <br>
+      <button ng-click="agregarUsuario()">Agregar</button>
+    </form>
+    <hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Edad</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="usuario in usuarios">
+          <td>{{$index}} {{usuario.nombre}}</td>
+          <td>{{usuario.apellido}}</td>
+          <td>{{usuario.edad}}</td>
+          <td>{{usuario.email}}</td>
+          <td>
+            <button ng-click="selectUsuario(usuario, $index)">Seleccionar</button>
+            <button ng-click="eliminarUsuario($index)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Vincular el app.js en el index -->
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
