@@ -1,0 +1,134 @@
+- Roadmap
+	- ABM Usuarios
+		- Listado de usuarios
+		- Alta de usuarios
+		- Baja de usuarios
+		- Modificacion de usuarios
+
+	-- Que la informacion persista en un servicio de API
+		API: crudcrud.com
+
+	Como conectamos una APP de FrontEnd con un Backend (API)?
+
+	- Via AJAX:
+		- Peticiones HTTP 
+			Xampp, Wamp, nodejs (http-server)
+
+			Comunicacion:
+
+			<APP AngularJS> <-- HTTP --> <Backend API> 
+
+			Verbos de HTTP: 
+
+				GET: Obtengo datos de una URL
+				POST: Envio datos (creo datos) contra un backend  
+				PUT: Si ya existe un dato determinado, lo actualizo
+				DELETE: Elimino datos dado un backend
+	---- 
+
+	Donde veo la comunicacion HTTP en el navegador?
+
+
+		- En la pestana network podemos inspeccionar todas las peticiones del navegador con los distintos servidores
+
+			- Request, Response
+
+				- Request: Hace la comunicacion con el protocolo HTTP e invoca un verbo
+					* En este caso fue una request de tipo GET
+
+				- Response: Es lo que nos devuelve la request
+					- Status code
+						200 OK
+						404 Not found 
+						500 Internal server error
+						...
+
+					- Content
+						- HTML
+						- JSON
+						- XML
+						...
+
+			Headers
+				- Response headers: 
+					- Lo que nos devuelve el servidor de como viene la informacion
+
+				- Request headers: 
+					- Es lo que queremos hacer saber al servidor de como va la informacion hacia el 
+	----
+
+		HTTP GET
+			- Obtiene informacion de una URL
+
+			GET /usuarios
+				Devuelve un "body", que es el body?
+
+				Ejemplo #1:
+				
+				- Si mi content-type dice text/html 
+				- Entonces es un archivo HTML y el navegador lo va interpretar como tal
+
+				[ Headers ]
+				[ Body ]
+
+				Ejemplo #2 
+				- Si mi content-type dice text/javascript o application/javascript
+				- Entonces es un archivo JS
+
+				Ejemplo #3
+				- Si mi content-type dice application/json 
+				- Entonces nos devuelve una estructura de datos de tipo JSON
+
+					JSON: JavaScript Object Notation
+
+					[{...}, ... ] Array de objetos (Tanto en JS como en JSON)
+					{...} Objeto (Tanto en JS como en JSON)
+
+				AJAX: Async Javascript App XML
+
+		
+		EJERCICIO: 
+
+		Buscador de paises. 
+			- Buscar un pais por nombre
+
+			- Input, boton: Que vamos a utilizar para ingresar el nombre del pais
+			- Lanzo una peticion hacia una API publica para pedir el pais por el nombre
+				GET /paises/uruguay
+					-> JSON: 
+						- Puede ser un objeto
+						- Puede ser una lista con un solo elemento
+
+			- Una vez que obtengo los datos de la peticion, sirvo la informacion dentro 
+			de una tabla
+
+			* Obs: Una API que dada una peticion devuelve un JSON puede 
+			ser una API de tipo REST
+
+			API: https://restcountries.eu/rest/v2/name/
+
+
+
+		VISTA: 
+
+			- Input, button y una tabla
+
+		LOGICA: 
+
+			- Hacer la busqueda con AJAX a la API: https://restcountries.eu/rest/v2/name/{name}
+			- Parametrizando el name que viene desde el input
+			- Servir los datos en la vista en una estructura de datos
+
+		INTEGRACION: 
+
+			- La funcion que dispara el boton 
+			- La captura de la variable dentro del input
+			- Servir la informacion sobre la tabla
+
+	--- 
+
+	Organizar nuestro codigo de tal forma que empecemos a resumir la informacion de
+	HTML del index y escalar las vistas
+
+	Va a ser importante para migrar al concepto de SPA: Single Page Application
+		- Toda aplicacion de tipo SPA esta orientada a estados

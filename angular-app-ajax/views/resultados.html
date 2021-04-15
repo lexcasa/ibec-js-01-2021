@@ -1,0 +1,52 @@
+<div ng-controller="ResultadosCtrl">
+    <div>
+        <label>Filtro por columna</label>
+        <input type="radio" ng-model="filtro.selected" value="COLUMNAS">
+        <label>Filtro conceptual</label>
+        <input type="radio" ng-model="filtro.selected" value="TODO">
+    </div>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Code</th>
+				<th>Capital</th>
+				<th>Region</th>
+			</tr>
+			<!-- Filtro por columnas -->
+			<tr ng-if="paises.length > 0 && filtro.selected == 'COLUMNAS'">
+				<th>
+					<input type="text" ng-model="buscar.name" placeholder="Buscar por nombre">
+				</th>
+				<th>
+					<input type="text" ng-model="buscar.alpha2Code" placeholder="Buscar por codigo">
+				</th>
+				<th>
+					<input type="text" ng-model="buscar.capital" placeholder="Buscar por capital">
+				</th>
+				<th>
+					<input type="text" ng-model="buscar.region" placeholder="Buscar por region">
+				</th>
+			</tr>
+            <!-- Filtro conceptual -->
+            <tr ng-if="paises.length > 0 && filtro.selected == 'TODO'">
+                <th colspan="4">
+                    <input type="text" style="line-height: 2rem; width: 100%;" ng-model="buscar" placeholder="Buscar por todos los campos">
+                </th>
+            </tr>
+		</thead>
+		<tbody>
+			<tr ng-if="paises.length > 0" ng-repeat="pais in paises | filter:buscar">
+				<td>{{pais.name}}</td>
+				<td>{{pais.alpha2Code}}</td>
+				<td>{{pais.capital}}</td>
+				<td>{{pais.region}}</td>
+			</tr>
+			<tr ng-if="paises.length == 0">
+				<td colspan="4">
+					No existe informacion de paises
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

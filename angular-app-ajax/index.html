@@ -1,0 +1,20 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body ng-controller="MainCtrl">
+  	<p>{{titulo}}</p>
+    <!-- Aqui estaria el: buscador.html -->
+    <div ng-include="'views/buscador.html'"></div>
+
+    <!-- Aqui estaria resultados.html -->
+    <div ng-include="'views/resultados.html'"></div>
+
+    <script type="text/javascript" src="app.js"></script>
+
+    <!-- Invocamos a los controllers -->
+    <script type="text/javascript" src="controllers/buscar.controller.js"></script>
+  	<script type="text/javascript" src="controllers/resultados.controller.js"></script>
+  </body>
+</html>

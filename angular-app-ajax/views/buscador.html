@@ -1,0 +1,11 @@
+<div ng-controller="BuscarCtrl">
+	<input type="text" ng-model="search.nombrePais">
+	<button 
+		ng-click="buscarPais()" 
+		ng-disabled="search.nombrePais.length == 0 || isLoading">
+		{{ isLoading == true ? 'Procesando' : 'Buscar' }}
+	</button>
+	<button
+		ng-click="restablecer()"
+		>Restablecer</button>
+</div>
