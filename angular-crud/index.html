@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <!-- Step 2 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body ng-controller="MainCtrl">
+
+  	<!-- MacroComponent -->
+  	<div ng-controller="FormularioCtrl">
+	    <!-- formulario.html -->
+	    <div ng-include="'views/formulario.html'"></div>
+	    <hr>
+	    <!-- listado.html -->
+	    <div ng-include="'views/listado.html'"></div>
+    </div>
+
+    <!-- Vincular el app.js en el index -->
+    <script type="text/javascript" src="app.js"></script>
+
+    <!-- Vinculo los controllers -->
+    <script type="text/javascript" src="controllers/formulario.controller.js"></script>
+  	<script type="text/javascript" src="controllers/listado.controller.js"></script>
+  </body>
+</html>
