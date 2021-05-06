@@ -1,5 +1,20 @@
-- PROBLEMAS: 
+- PROBLEMAS A RESOLVER: 
 
+	- "Escanear" un producto y listar en la tabla 
+		- Esto implica:
+			
+			Buscar un prodcuto de un array de productos
+			Encontrar el producto 
+			Y hacer un push a una lista de productos
 
-	- Como encuentro un producto por su codigo y luego muestro en la tabla de producto?
-	- Como va a ser la estructura de datos de la base de productos? 
+	- Agregar el peso en la tabla de la derecha 
+		- La correspondencia de los indices se correlacionan con el peso 
+
+		Lista Productos [P1, P2, P3 ]
+		Lista Pesos 	[10, 5, 15]
+
+		CONDICIONES: 
+
+			- El largo de la lista de productos debe ser igual al largo de la lista de pesos
+			- Los indices de la lista de productos tienen el mismo orden de la lista de pesos
+			

@@ -1,0 +1,12 @@
+- RESOLVER: 
+	1. Margen de tolerancia del peso/producto
+	2. Definir los pesos en Quilos
+	3. La funcion pesarProductos no pese mas productos de los que estan escaneados
+	4. El boton "Emitir ticket" tiene que aparecer solo si la lista de productos 
+	  verifica contra toda la lista de precios
+	  	- Si existe por lo menos un ERROR no aparece el boton de "Emitir Ticket"
+	5. Si tenemos un ERROR en la lista de pesos que no sume al TOTAL
+	6. El boton de historial va aparecer siempre y cuando tenga datos el GET de /tickets 
+
+
+	

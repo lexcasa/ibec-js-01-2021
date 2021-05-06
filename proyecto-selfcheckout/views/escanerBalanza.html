@@ -1,0 +1,103 @@
+<!-- Escaner de cod -->
+<div class="col-6" ng-if="ticket.emitido == false">
+	<div class="row">
+		<div class="col-6">
+			 <input type="text" name="" ng-model="q.qProducto" placeholder="Codigo del producto" class="form-control">
+		</div>
+		<div class="col-6">
+			<button class="btn btn-primary" ng-click="buscaProducto()">Escanear</button>
+		</div>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Producto</th>
+				<th>Precio</th>
+				<th>Cantidad</th>
+				<th>Subtotal</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="producto in productos track by $index">
+				<td>{{producto.nombre}}</td>
+				<td>{{producto.precio}}</td>
+				<td>1</td>
+				<td>{{producto.precio}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>TOTAL: </td>
+				<td colspan="3" class="text-right">{{ticket.total}}</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+<!-- Escaner de cod -->
+<div class="col-6" ng-if="ticket.emitido == false">
+	<div class="row">
+		<div class="col-6">
+			<input type="number" ng-model="q.peso" placeholder="Peso del producto" class="form-control">
+		</div>
+		<div class="col-6">
+			<button class="btn btn-info" ng-click="pesarProductos()">Pesar</button>
+		</div>
+	</div>
+	<table class="table">
+		<tr>
+			<th>Peso</th>
+			<th>Verifica</th>
+			<th></th>
+		</tr>
+		<tr ng-repeat="peso in pesos track by $index">
+			<th>{{peso.medida}}</th>
+			<th>{{peso.verifica == true ? 'OK' : 'ERROR'}}</th>
+			<th></th>
+		</tr>
+	</table>
+	<table class="table">
+		<tr>
+			<td>
+				<button class="btn btn-success" ng-click="emitirTicket()">Emitir Ticket</button>
+			</td>
+			<td>
+				<button class="btn btn-secondary">Historial</button>
+			</td>
+			<td></td>
+		</tr>
+	</table>
+</div>
+<!-- MUESTRO EL TICKET SI LO EMITO -->
+<div ng-if="ticket.emitido == true">
+	<h2>TICKET DEL CLIENTE</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Producto</th>
+				<th>Precio</th>
+				<th>Cantidad</th>
+				<th>Subtotal</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="producto in ticket.productos track by $index">
+				<td>{{producto.nombre}}</td>
+				<td>{{producto.precio}}</td>
+				<td>1</td>
+				<td>{{producto.precio}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>TOTAL: </td>
+				<td>{{ticket.total}}</td>
+				<td>
+					<button class="btn btn-info">Imprimir</button>
+				</td>
+				<td>
+					<button class="btn btn-secondary" ng-click="backBalanza()">Volver</button>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>

@@ -6,60 +6,15 @@
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
   </head>
   <body ng-controller="MainCtrl">
-  	<div class="row" style="margin-top: 1rem; padding: 1rem">
-  		<!-- Escaner de cod -->
-	  	<div class="col-6">
-	  		<div class="row">
-	  			<div class="col-6">
-	  				 <input type="text" name="" ng-model="cod" placeholder="Codigo del producto" class="form-control">
-	  			</div>
-	  			<div class="col-6">
-	  				<button class="btn btn-primary" ng-click="buscarProductoPorCod()">Escanear</button>
-	  			</div>
-	  		</div>
-	  		<table class="table">
-	  			<thead>
-		  			<tr>
-		  				<th>Producto</th>
-		  				<th>Precio</th>
-		  				<th>Cantidad</th>
-		  				<th>Subtotal</th>
-		  				<th></th>
-		  			</tr>
-	  			</thead>
-	  			<tbody>
-		  			<tr ng-repeat="producto in prodEscaneados track by $index">
-		  				<td>{{producto.nombre}}</td>
-		  				<td>{{producto.precio}}</td>
-		  				<td>1</td>
-		  				<td>{{producto.precio}}</td>
-		  				<td>
-		  					<button class="btn btn-danger">Eliminar</button>
-		  				</td>
-		  			</tr>
-	  			</tbody>
-	  		</table>
-	  	</div>
-	  	<!-- Escaner de cod -->
-	  	<div class="col-6">
-	  		<div class="row">
-		  		<div class="col-6">
-		  			<input type="text" name="" placeholder="Peso del producto" class="form-control">
-	  			</div>
-	  			<div class="col-6">
-	  				<button class="btn btn-info">Pesar</button>
-	  			</div>
-  			</div>
-	  		<table class="table">
-	  			<tr>
-	  				<th>Peso</th>
-	  				<th>Verifica</th>
-	  				<th></th>
-	  			</tr>
-	  		</table>
-	  	</div>
+  	<div style="margin-top: 1rem; padding: 1rem">
+  		<!-- Incluyo el view de escanerBalanza.html -->
+  		<div class="row" ng-controller="SelfCheckoutCtrl" ng-include="'views/escanerBalanza.html'"></div>
   	</div>
     <!-- Vincular el app.js en el index -->
     <script type="text/javascript" src="app.js"></script>
+
+    <!-- Invocamos el controller de la selfcheckout -->
+    <script type="text/javascript" src="controllers/selfcheckout.controller.js"></script>
+    
   </body>
 </html>

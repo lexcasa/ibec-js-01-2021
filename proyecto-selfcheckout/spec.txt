@@ -63,3 +63,11 @@
 	  	- Control: 
 	  		- Si escaneo un producto que no me deje escanear otro producto si no tiene la correspondencia del peso
 	  		- No puedo pesar algo si no tengo por lo menos un producto escaneado
+
+
+	  	Est. de datos del peso: 
+
+	  		let peso = {
+	  			medido: 100,
+	  			verifica: true
+	  		}
