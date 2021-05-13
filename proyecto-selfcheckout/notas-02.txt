@@ -1,12 +1,36 @@
 - RESOLVER: 
 	1. Margen de tolerancia del peso/producto
-	2. Definir los pesos en Quilos
-	3. La funcion pesarProductos no pese mas productos de los que estan escaneados
+	2. Definir los pesos en Quilos 
+	3. La funcion pesarProductos no pese mas productos de los que estan escaneados 
 	4. El boton "Emitir ticket" tiene que aparecer solo si la lista de productos 
 	  verifica contra toda la lista de precios
 	  	- Si existe por lo menos un ERROR no aparece el boton de "Emitir Ticket"
-	5. Si tenemos un ERROR en la lista de pesos que no sume al TOTAL
+	5. Si tenemos un ERROR en la lista de pesos que no sume al TOTAL 
 	6. El boton de historial va aparecer siempre y cuando tenga datos el GET de /tickets 
+	7. (Opcional) generar un state para controlar los estados: 
+		- historico
+		- ticket
+		- balanza
+	8. Obtener ticket por ID a traves de un GET
+
+
+
+	1. Margen de tolerancia:
+
+		Producto #1 
+			peso: 100 // Peso liquido
+			empaque: [101, 103, 106] // Peso neto
+
+		tolerancia: (101 + 103 + 106) / 3 = 103,3
+		desviacion: Math.abs( ((peso liquido / peso neto) - 1) * 100 ) = 3,22
+
+		Balanza: 
+			102 dentro del margen
+
+			(-3,22% , +3,22%) +3,22%: 103,3
+							  -3,22%: 96,78
+
+			102 Incluido: [96,78, ... , 103,3]
 
 
 	

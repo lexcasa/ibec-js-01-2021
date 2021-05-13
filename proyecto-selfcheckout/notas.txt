@@ -17,4 +17,49 @@
 
 			- El largo de la lista de productos debe ser igual al largo de la lista de pesos
 			- Los indices de la lista de productos tienen el mismo orden de la lista de pesos
-			
+
+	- EMITIR TICKET E HISTORIAL DE TICKETS 
+
+		- Emitir ticket 
+			POST /tickets 
+
+			{
+				total: 0,
+				emitido: true,
+				productos: [{...}, ...]
+			}
+
+		1. [x] Hacemos el POST del ticket contra la API de crudcrud 
+		2. [x] Mientras se envia y se recibe la respuesta del ticket tenemos que avisar al usuario que esta procesando la info
+			- Tenemos una variable tipo flag para escuchar que pasa entre el cliente - servidor
+			- q.emitiendoTicket 
+				- Inicialmente vale false
+				- Donde afecta:
+					
+					- Pantallas
+						- Estoy inicialmente en la balanza
+						- Hasta que {emitiendoTicket no sea false y ticket.emitido sea true}
+						- No paso al ticket
+					
+					- Boton de activacion
+						- Si el boton inicialmente esta habilitado si emitiendoTicket es false
+						- Cuando emitiendoTicket es true entonces el boton queda procesando
+				
+				COND: [emitiendoTicket no sea false y ticket.emitido sea true]
+					- Cuando estoy en la pantalla del ticket, el ticke fue emitido
+					- O sea, emitiendoTicket es false 
+
+		3. [x] Al dar clic en volver hay que liberar el ticket anterior
+
+	SERVICIOS PARA LA SELFCHECKOUT
+		
+		1. Productos 
+			- Obtener productos
+				- Crear un archivo JSON que tenga la base de productos
+			- Buscar productos por cod
+
+		2. Tickets 
+			- [x] Obtener tickets (Historico)
+			- [x] Emitir ticket 
+			- [x] Obtener ticket por ID (Pero en memoria)
+			- [x] Eliminar ticket

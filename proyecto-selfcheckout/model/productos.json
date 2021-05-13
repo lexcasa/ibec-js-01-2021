@@ -1,0 +1,35 @@
+[
+	{
+		"cod": "ANMC123123",
+		"nombre": "Manteca conaprole 200g",
+		"empaques": [ 
+			205,
+			215,
+			209
+		],
+		"peso": 200,
+		"precio": 100
+	},
+	{
+		"cod": "CF1111",
+		"nombre": "Cafe 100g",
+		"empaques": [ 
+			205,
+			215,
+			209
+		],
+		"peso": 100,
+		"precio": 350
+	},
+	{
+		"cod": "CCC123123",
+		"nombre": "Manteca Calcar 200g",
+		"empaques": [ 
+			205,
+			215,
+			209
+		],
+		"peso": 200,
+		"precio": 98
+	}
+]

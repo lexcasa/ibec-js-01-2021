@@ -1,0 +1,70 @@
+<div class="col-6">
+	<div class="row">
+		<div class="col-6">
+			 <input type="text" name="" ng-model="q.qProducto" placeholder="Codigo del producto" class="form-control">
+		</div>
+		<div class="col-6">
+			<button class="btn btn-primary" ng-click="buscaProducto()">Escanear</button>
+		</div>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Producto</th>
+				<th>Precio</th>
+				<th>Cantidad</th>
+				<th>Subtotal</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="producto in productos track by $index">
+				<td>{{producto.nombre}}</td>
+				<td>{{producto.precio}}</td>
+				<td>1</td>
+				<td>{{producto.precio}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>TOTAL: </td>
+				<td colspan="3" class="text-right">{{ticket.total}}</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+<!-- Escaner de cod -->
+<div class="col-6">
+	<div class="row">
+		<div class="col-6">
+			<input type="number" ng-model="q.peso" placeholder="Peso del producto" class="form-control">
+		</div>
+		<div class="col-6">
+			<button class="btn btn-info" ng-click="pesarProductos()">Pesar</button>
+		</div>
+	</div>
+	<table class="table">
+		<tr>
+			<th>Peso</th>
+			<th>Verifica</th>
+			<th></th>
+		</tr>
+		<tr ng-repeat="peso in pesos track by $index">
+			<th>{{peso.medida}}</th>
+			<th>{{peso.verifica == true ? 'OK' : 'ERROR'}}</th>
+			<th></th>
+		</tr>
+	</table>
+	<table class="table">
+		<tr>
+			<td>
+				<button 
+					ng-disabled="q.emitiendoTicket == true"
+					class="btn btn-success" ng-click="emitirTicket()">{{q.emitiendoTicket == false ? 'Emitir Ticket' : 'Procesando ... '}}</button>
+			</td>
+			<td>
+				<button class="btn btn-secondary" ng-click="showHistorial()">Historial</button>
+			</td>
+			<td></td>
+		</tr>
+	</table>
+</div>

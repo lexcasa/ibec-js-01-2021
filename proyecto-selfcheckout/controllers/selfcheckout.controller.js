@@ -1,102 +1,129 @@
-app.controller('SelfCheckoutCtrl', ['$scope', function ($scope) {
+app.controller('SelfCheckoutCtrl', ['$scope','ProductoService','TicketService', function ($scope, ProductoService, TicketService) {
 	console.log("SelfCheckoutCtrl :: ")
 
-	$scope.q = {qProducto: "", peso: 0}
+	$scope.q = {qProducto: "", peso: 0, emitiendoTicket: false, historico: false}
 
-	$scope.baseProductos = [
-		{
-			cod: "ANMC123123",
-			nombre: "Manteca conaprole 200g",
-			empaques: [ 
-				205,
-				215,
-				209
-			],
-			peso: 200,
-			precio: 100
-		},
-		{
-			cod: "CF1111",
-			nombre: "Cafe 100g",
-			empaques: [ 
-				205,
-				215,
-				209
-			],
-			peso: 100,
-			precio: 350
-		}
-	]
+	$scope.baseProductos = []
+	$scope.historicoTickets = []
 
 	$scope.productos = []
 	$scope.pesos 	 = []
 
 	$scope.ticket 	 = {
 		total: 0,
-		emitido: false
+		emitido: false,
+		productos: []
 	}
 
-	$scope.buscaProducto = function (){
-		console.log("producto: ", $scope.q.qProducto )
+	let initData = function (){
+		// Obtenemos el listado de productos de la base local
+		ProductoService.listado( function (res){
+			if(!res.error){
+				$scope.baseProductos = res.response
+			} else {
+				alert(res.error)
+			}
+		})
 
-		if($scope.productos.length === $scope.pesos.length){
-			$scope.baseProductos.map( function (producto){
-				if(producto.cod == $scope.q.qProducto){
-					// Si encuentro el producto lo agrego 
-					// a la lista de productos
-					$scope.productos.push( angular.copy(producto) )
-				}
-			})
-		}
+		// Obtengo el listado de ticket del servicio
+		TicketService.listado( function (res){
+			if(!res.error){
+				$scope.historicoTickets = res.response
+			} else {
+				alert(res.error)
+			}
+		})
+	}
+	
+	initData()
+
+	$scope.buscaProducto = function (){
+		ProductoService.buscarProducto( 
+			$scope.baseProductos, 
+			$scope.productos, 
+			$scope.pesos, 
+			$scope.q.qProducto, 
+			function (newProducto){
+				$scope.productos = newProducto
+		})
 	}
 
 	$scope.pesarProductos = function (){
-		let peso = undefined
-		if($scope.q.peso > 0){
-			peso = {
-				medida: angular.copy($scope.q.peso),
-				verifica: false
-			}
-		}
 
-		// Asumo que lo que voy a pesar se corresponde con el ultimo elemento de la lista
-		let lastIndex = $scope.productos.length - 1
-
-		if($scope.productos[lastIndex].peso == peso.medida){
-			peso.verifica = true
-		}
-
-		console.log("lastIndex :: ", lastIndex)
-
-		if(peso){
-			$scope.pesos.push( peso )
-
-			// Luego de pesar
-			// Corro los totales
-			$scope.calcTotal()
-		}
+		ProductoService.pesarProductos(
+			$scope.q.peso, 
+			$scope.pesos, 
+			$scope.productos, 
+			function (newPesos){
+				$scope.pesos = newPesos
+				$scope.calcTotal()
+			})
 	}
 
 	$scope.calcTotal = function (){
-		let total = 0
-
-		$scope.productos.map( function (producto){
-			total += producto.precio
+		ProductoService.total( $scope.productos, function (total){
+			$scope.ticket.total = total
 		})
-
-		$scope.ticket.total = total
 	}
 
 	$scope.emitirTicket = function (){
 		let productos = angular.copy($scope.productos)
 
+		// Acciones de la UI
+		$scope.q.emitiendoTicket = true
 		$scope.ticket.productos = productos
-		$scope.ticket.emitido 	= true
+
+		
+		let ticket 	  = angular.copy($scope.ticket)
+
+		// Engancho los productos al ticket
+		ticket.productos = productos
+
+		TicketService.emitir( ticket, function (res){
+			if(!res.error){
+				$scope.ticket.emitido 	 = res.emitido
+				$scope.q.emitiendoTicket = res.emitiendo
+			}
+		})
 
 		console.log("TICKET :: ", $scope.ticket)
 	}
 
 	$scope.backBalanza = function (){
-		$scope.ticket.emitido 	= false
+		$scope.ticket 	 = {
+			total: 0,
+			emitido: false,
+			productos: []
+		}
+
+		$scope.productos = []
+		$scope.pesos 	 = []
+
+		$scope.q = {qProducto: "", peso: 0, emitiendoTicket: false, historico: false}
+		initData()
+	}
+
+	$scope.showHistorial = function (){
+		$scope.q.historico = !$scope.q.historico
+	}
+
+	$scope.verTicket = function (ticket){
+		$scope.ticket = ticket
+	}
+	$scope.eliminarTicket = function (id){
+		if(confirm("Esta seguro que quiere eliminar este ticket?")){
+			// disparo el servicio
+			TicketService.eliminar(id, function (res){
+				if(!res.error){
+					// Recargo el historial
+					initData()
+
+					// Devuelvo el alerta de que esta todo OK
+					alert(res.response)
+				} else {
+					alert(res.error)
+				}
+			})
+		}
 	}
 }])

@@ -1,0 +1,21 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Total</th>
+			<th>Cantidad Productos</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="ticket in historicoTickets">
+			<td>{{ticket._id}}</td>
+			<td>{{ticket.total}}</td>
+			<td>{{ticket.productos.length}}</td>
+			<td>
+				<button class="btn btn-primary" ng-click="verTicket(ticket)">Ver</button>
+				<button class="btn btn-danger" ng-click="eliminarTicket(ticket._id)">Eliminar</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

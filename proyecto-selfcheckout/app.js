@@ -2,7 +2,7 @@
 // app.js
 // Obs: los parentesis rectos van servir para injectar dependencias
 let app = angular.module('app', [])
-
+const API = 'https://crudcrud.com/api/7e79cd41b62447588a163a3ca317deca/'
 // Generamos un controller
 app.controller('MainCtrl', ['$scope', function ($scope) {
 
